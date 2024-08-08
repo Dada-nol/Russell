@@ -2,19 +2,18 @@ const Catway = require("../models/catway");
 const path = require("path");
 require("dotenv").config({ path: path.resolve(__dirname, "../env/.env") });
 
-exports.getOneCatway = async (req, res, next) => {
-  const id = req.params.id;
+exports.createCatway = async (req, res, next) => {
+  const temp = {
+    catwayNumber: req.body.catwayNumber,
+    type: req.body.type,
+    catwayState: req.body.catwayState,
+  };
 
   try {
-    let catway = await Catway.findById(id);
-
-    if (catway) {
-      return res.status(200).json(catway);
-    }
-
-    return res.status(404).json("catway_not_found");
+    let catway = await Catway.create(temp);
+    return res.status(201).json(catway);
   } catch (error) {
-    console.error("Error fetching catway by ID:", error);
+    console.error("Error adding catway:", error);
     return res.status(501).json(error);
   }
 };
@@ -36,18 +35,19 @@ exports.getAllCatways = async (req, res, next) => {
   }
 };
 
-exports.createCatway = async (req, res, next) => {
-  const temp = {
-    catwayNumber: req.body.catwayNumber,
-    type: req.body.type,
-    catwayState: req.body.catwayState,
-  };
+exports.getOneCatway = async (req, res, next) => {
+  const id = req.params.id;
 
   try {
-    let catway = await Catway.create(temp);
-    return res.status(201).json(catway);
+    let catway = await Catway.findById(id);
+
+    if (catway) {
+      return res.status(200).json(catway);
+    }
+
+    return res.status(404).json("catway_not_found");
   } catch (error) {
-    console.error("Error adding catway:", error);
+    console.error("Error fetching catway by ID:", error);
     return res.status(501).json(error);
   }
 };
