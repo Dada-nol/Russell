@@ -1,8 +1,9 @@
 const express = require("express");
-// const path = require("path");
+const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const cors = require("cors");
+const methodOverride = require("method-override");
 
 const indexRouter = require("./routes/index");
 
@@ -11,6 +12,8 @@ const mongodb = require("./db/mongo");
 mongodb.initClientDbConnection();
 
 const app = express();
+
+app.use(methodOverride("_method"));
 
 app.use(
   cors({
@@ -36,5 +39,8 @@ app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send("Erreur serveur !");
 });
+
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
 
 module.exports = app;
