@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+  <body>
+    <form method="POST" action="/catways/<%= catway._id %>?_method=PUT">
+      <fieldset>
+        <legend>Formulaire de test de modification de catway</legend>
+        <br />
+        <label>Choisissez un numéro</label>
+        <input
+          type="text"
+          name="catwayNumber"
+          placeholder="<%= catway.catwayNumber %>"
+          required
+        /><br /><br />
+
+        <label>Choisissez un type</label>
+        <select name="type">
+          <option value="Long">Long</option>
+          <option value="Court">Court</option>
+        </select>
+
+        <label> Description du catway</label>
+        <input
+          type="text"
+          name="catwayState"
+          placeholder="<%= catway.catwayState %>"
+          required
+        /><br /><br />
+
+        <input type="submit" value="submit" />
+      </fieldset>
+    </form>
+  </body>
+</html>

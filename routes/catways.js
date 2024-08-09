@@ -10,8 +10,11 @@ router.get("/create", async (req, res, next) => {
 });
 
 router.get("/update/:id", async (req, res, next) => {
+  const id = req.params.id;
+  let catway = await Catway.findById(id);
   res.render("updateCatway", {
     title: "Update",
+    catway: catway,
   });
 });
 
