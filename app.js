@@ -37,7 +37,7 @@ app.use((err, req, res, next) => {
   res.status(500).send("Erreur serveur !");
 });
 
-app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
 
 module.exports = app;
