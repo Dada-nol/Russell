@@ -16,8 +16,11 @@ router.get("/update/:id", async (req, res, next) => {
 });
 
 router.get("/delete/:id", async (req, res, next) => {
+  const id = req.params.id;
+  let catway = await Catway.findById(id);
   res.render("deleteCatway", {
     title: "Delete",
+    catway: catway,
   });
 });
 
