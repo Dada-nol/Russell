@@ -4,6 +4,7 @@ const path = require("path");
 require("dotenv").config({ path: path.resolve(__dirname, "../env/.env") });
 
 const catwayRoute = require("../routes/catways");
+const userRoute = require("../routes/users");
 const reservationRoute = require("../routes/reservations");
 
 router.get("/", async function (req, res, next) {
@@ -13,6 +14,7 @@ router.get("/", async function (req, res, next) {
 });
 
 router.use("/catways", catwayRoute);
+router.use("/users", userRoute);
 router.use("/catways/:id/reservations", reservationRoute);
 
 module.exports = router;

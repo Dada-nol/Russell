@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+  <body>
+    <form method="POST" action="/users/<%= user._id %>?_method=PATCH">
+      <fieldset>
+        <legend>Formulaire de test de création d'utilisateur</legend>
+        <br />
+        <label>Choisissez un nom</label>
+        <input type="text" name="name" required /><br /><br />
+        <label>Choisissez un prénom</label>
+        <input type="text" name="firstname" required /><br /><br />
+        <label>Choisissez un email</label>
+        <input type="text" name="email" required /><br /><br />
+        <label> Choisissez un mot de passe</label>
+        <input type="text" name="password" required /><br /><br />
+
+        <input type="submit" value="submit" />
+      </fieldset>
+    </form>
+  </body>
+</html>
