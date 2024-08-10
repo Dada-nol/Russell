@@ -1,9 +1,9 @@
 const User = require("../models/user");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 const path = require("path");
 require("dotenv").config({ path: path.resolve(__dirname, "../env/.env") });
 
-// On exporte le callback afin d'y accéder dans notre gestionnaire de routes
-// Ici c'est le callback qui servira à ajouter un user avec son id
 exports.getById = async (req, res, next) => {
   const id = req.params.id;
 

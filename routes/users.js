@@ -37,6 +37,8 @@ router.get("/read/:id", async (req, res, next) => {
   });
 });
 
+
+
 router.get("/:id", service.getById);
 router.get("/", service.getAllUsers);
 router.post("/", service.add);
