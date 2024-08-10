@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const service = require("../services/users");
 const User = require("../models/user");
+const private = require("../middlewares/private");
 
 router.get("/add", async (req, res, next) => {
   res.render("user/create_user", {
@@ -41,5 +42,6 @@ router.get("/", service.getAllUsers);
 router.post("/", service.add);
 router.patch("/:id", service.update);
 router.delete("/:id", service.delete);
+router.post("/authenticate", service.authenticate);
 
 module.exports = router;
