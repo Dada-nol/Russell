@@ -26,3 +26,20 @@ module.exports.add = async (req, res, next) => {
     return res.status(501).json(error);
   }
 };
+
+exports.getOneReservation = async (req, res, next) => {
+  const id = req.params.idReservation;
+
+  try {
+    let reservation = await Reservation.findById(id);
+
+    if (reservation) {
+      return res.status(200).json(reservation);
+    }
+
+    return res.status(404).json("reservation_not_found");
+  } catch (error) {
+    console.error("Error fetching catway by ID:", error);
+    return res.status(501).json(error);
+  }
+};
