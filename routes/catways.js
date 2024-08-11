@@ -1,40 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const service = require("../services/catways");
-const Catway = require("../models/catway");
+const views = require("../services/views");
 
-router.get("/add", async (req, res, next) => {
-  res.render("catway/createCatway", {
-    title: "Create",
-  });
-});
-
-router.get("/update/:id", async (req, res, next) => {
-  const id = req.params.id;
-  let catway = await Catway.findById(id);
-  res.render("catway/updateCatway", {
-    title: "Update",
-    catway: catway,
-  });
-});
-
-router.get("/delete/:id", async (req, res, next) => {
-  const id = req.params.id;
-  let catway = await Catway.findById(id);
-  res.render("catway/deleteCatway", {
-    title: "Delete",
-    catway: catway,
-  });
-});
-
-router.get("/read/:id", async (req, res, next) => {
-  const id = req.params.id;
-  let catway = await Catway.findById(id);
-  res.render("catway/readCatway", {
-    title: "Read",
-    catway: catway,
-  });
-});
+router.get("/add", views.add_catway);
+router.get("/update/:id", views.update_catway);
+router.get("/delete/:id", views.delete_catway);
+router.get("/read/:id", views.read_catway);
 
 router.post("/", service.createCatway);
 router.get("/", service.getAllCatways);

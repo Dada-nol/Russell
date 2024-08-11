@@ -1,47 +1,20 @@
 const express = require("express");
 const router = express.Router();
 const service = require("../services/users");
-const User = require("../models/user");
+const views = require("../services/views");
 const private = require("../middlewares/private");
 
-router.get("/add", async (req, res, next) => {
-  res.render("user/create_user", {
-    title: "Create",
-  });
-});
-
-router.get("/update/:id", async (req, res, next) => {
-  const id = req.params.id;
-  let user = await User.findById(id);
-  res.render("user/update_user", {
-    title: "Update",
-    user: user,
-  });
-});
-
-router.get("/delete/:id", async (req, res, next) => {
-  const id = req.params.id;
-  let user = await User.findById(id);
-  res.render("user/delete_user", {
-    title: "Delete",
-    user: user,
-  });
-});
-
-router.get("/read/:id", async (req, res, next) => {
-  const id = req.params.id;
-  let user = await User.findById(id);
-  res.render("user/read_user", {
-    title: "Read",
-    user: user,
-  });
-});
+router.get("/add", views.add_user);
+router.get("/update/:id", views.update_user);
+router.get("/delete/:id", views.delete_user);
+router.get("/read/:id", views.read_user);
+router.get("/login", views.login);
 
 router.get("/:id", private.checkJWT, service.getById);
-/* router.get("/", service.getAllUsers); */
-router.post("/", service.add);
-router.patch("/:id", service.update);
-router.delete("/:id", service.delete);
-router.post("/authenticate", service.authenticate);
+router.get("/", private.checkJWT, service.getAllUsers);
+router.post("/", private.checkJWT, service.add);
+router.patch("/:id", private.checkJWT, service.update);
+router.delete("/:id", private.checkJWT, service.delete);
+router.post("/tableau_de_bord", private.checkJWT, service.authenticate);
 
 module.exports = router;

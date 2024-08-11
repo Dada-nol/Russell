@@ -21,7 +21,7 @@ exports.getById = async (req, res, next) => {
   }
 };
 
-/* // Ici c'est le callback qui servira à renvoyer tous les users
+// Ici c'est le callback qui servira à renvoyer tous les users
 exports.getAllUsers = async (req, res, next) => {
   const users = await User.find();
 
@@ -37,7 +37,7 @@ exports.getAllUsers = async (req, res, next) => {
     console.error("Error fetching user by ID:", error); // Log the error
     return res.status(501).json(error);
   }
-}; */
+};
 
 // Ici c'est le callback qui servira à ajouter un user
 exports.add = async (req, res, next) => {
@@ -104,6 +104,7 @@ exports.authenticate = async (req, res, next) => {
   const { email, password } = req.body;
 
   try {
+    let users = await User.find();
     let user = await User.findOne({ email: email }, "-__v -createdAt");
 
     if (user) {

@@ -11,13 +11,13 @@ exports.checkJWT = async (req, res, next) => {
     jwt.verify(token, SECRET_KEY, (err, decoded) => {
       if (err) {
         console.log(err.message);
-        return res.redirect("/users/loggin");
+        return res.redirect("/users/login");
       } else {
         console.log(decoded);
         next();
       }
     });
   } else {
-    return res.redirect("/users/loggin");
+    return res.redirect("/users/login");
   }
 };
