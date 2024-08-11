@@ -21,7 +21,7 @@ exports.getById = async (req, res, next) => {
   }
 };
 
-// Ici c'est le callback qui servira à renvoyer tous les users
+/* // Ici c'est le callback qui servira à renvoyer tous les users
 exports.getAllUsers = async (req, res, next) => {
   const users = await User.find();
 
@@ -37,7 +37,7 @@ exports.getAllUsers = async (req, res, next) => {
     console.error("Error fetching user by ID:", error); // Log the error
     return res.status(501).json(error);
   }
-};
+}; */
 
 // Ici c'est le callback qui servira à ajouter un user
 exports.add = async (req, res, next) => {
@@ -124,18 +124,18 @@ exports.authenticate = async (req, res, next) => {
               expiresIn: expireIn,
             }
           );
-
-          res.header("Authorization", "Bearer" + token);
-
-          return res.status(200).json("authenticate_succeed");
+          return (
+            res.cookie("token", token, { httpOnly: true }),
+            res.render("tdb", { title: "Tableau de bord", users: users })
+          );
         }
 
-        return res.status(403).json("wrong_credentials");
+        res.status(403).json("wrong_credentials");
       });
     } else {
-      return res.status(404).json("user_not_found");
+      res.status(404).json("user_not_found");
     }
   } catch (error) {
-    return res.status(501).json(error);
+    res.status(501).json(error);
   }
 };

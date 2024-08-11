@@ -37,10 +37,8 @@ router.get("/read/:id", async (req, res, next) => {
   });
 });
 
-
-
-router.get("/:id", service.getById);
-router.get("/", service.getAllUsers);
+router.get("/:id", private.checkJWT, service.getById);
+/* router.get("/", service.getAllUsers); */
 router.post("/", service.add);
 router.patch("/:id", service.update);
 router.delete("/:id", service.delete);

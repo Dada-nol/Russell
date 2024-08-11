@@ -8,11 +8,19 @@
   <body>
     <h1>Ceci est le tableau de bord</h1>
 
-    <ul>
-      <li><a href="/catways/create">Create a New Catway</a></li>
-      <li><a href="/catways">View All Catways</a></li>
-      <li><a href="/catways/update">Update a Catway</a></li>
-      <li><a href="/catways/delete">Delete a Catway</a></li>
-    </ul>
+    <%users.forEach((user)=> {%>
+    <div>
+      <h2><%=user.name%></h2>
+
+      <p>C <%=user.firstname%></p>
+      <p><%=user.email%></p>
+    </div>
+    <% })%>
+    <!-- <table>
+      <thead>
+        t
+      </thead>
+      <tbody></tbody>
+    </table> -->
   </body>
 </html>
