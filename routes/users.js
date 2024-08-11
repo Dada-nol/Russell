@@ -15,6 +15,6 @@ router.get("/", private.checkJWT, service.getAllUsers);
 router.post("/", private.checkJWT, service.add);
 router.patch("/:id", private.checkJWT, service.update);
 router.delete("/:id", private.checkJWT, service.delete);
-router.post("/tableau_de_bord", private.checkJWT, service.authenticate);
+router.post("/tableau_de_bord", service.authenticate, private.checkJWT);
 
 module.exports = router;
