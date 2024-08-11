@@ -6,12 +6,27 @@
     <title><%= title %>></title>
   </head>
   <body>
-    <h1>Welcome to Catway Management</h1>
-    <ul>
-      <li><a href="/catways/create">Create a New Catway</a></li>
-      <li><a href="/catways">View All Catways</a></li>
-      <li><a href="/catways/update">Update a Catway</a></li>
-      <li><a href="/catways/delete">Delete a Catway</a></li>
-    </ul>
+    <h1>Bienvenue sur la page d'accueil de l'API Russell</h1>
+    <article>
+      <h2>Qu'est ce que cette API ?</h2>
+      <p>
+        Vous retrouverez ici l'ensemble des catways disponible sur le port de
+        plaisance Russell
+      </p>
+      <p>
+        Ainsi qu'un système pour réserver un catway. Il faut pour cela avoir un
+        compte utilisateur et se connecter à son tableau de bord.
+      </p>
+      <p>
+        Vous pouvez retrouver votre tableau de bord ci-après, en vous
+        connectant, ainsi que la documentation de l'API.
+      </p>
+    </article>
+
+    <div>
+      <a href="/users/login"><button>Log in</button></a>
+
+      <a href=""><button>Documentation</button></a>
+    </div>
   </body>
 </html>
