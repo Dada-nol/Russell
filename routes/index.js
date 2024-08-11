@@ -15,6 +15,6 @@ router.get("/", async function (req, res, next) {
 
 router.use("/catways", catwayRoute);
 router.use("/users", userRoute);
-router.use("/catways/:id/reservations", reservationRoute);
+router.use("/catways", reservationRoute);
 
 module.exports = router;

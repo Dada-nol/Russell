@@ -3,10 +3,10 @@ const Schema = mongoose.Schema;
 
 const Reservation = new Schema({
   catwayNumber: {
-    type: [Number],
+    type: Number,
   },
   clientName: {
-    type: [String],
+    type: String,
   },
   boatName: {
     type: String,

@@ -4,7 +4,7 @@ const service = require("../services/reservations");
 
 router.get("/");
 router.get("/:idReservation");
-router.post("/");
+router.post("/:id/reservations/", service.add);
 router.delete("/:idReservation");
 
 module.exports = router;
