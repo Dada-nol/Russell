@@ -5,7 +5,7 @@ Russell est une API REST développée avec Node.js, Express et MongoDB. Ce proje
 
 ## Introduction
 
-Russell est une API REST conçue pour gérer les utilisateurs, catways et faire des réservations. Elle permet de créer, lire, mettre à jour et supprimer des utilisateurs, catways et réservations dans une base de données MongoDB. L'API est déployée sur Railway pour une accessibilité facile.
+Russell est une API REST conçue pour gérer les utilisateurs, catways et faire des réservations. Elle permet de créer, lire, mettre à jour et supprimer des utilisateurs, catways et réservations dans une base de données MongoDB. L'API est déployée sur Railway pour une accessibilité facile. Le domaine est le suivant : https://russell-production.up.railway.app/
 
 ## Fonctionnalités
 
