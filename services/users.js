@@ -1,7 +1,7 @@
 /* Méthodes pour la création, lecture, modification, suppression de l'objet user. Ainsi que la méthode pour l'authentification */
 
 const User = require("../models/user");
-const bcrypt = require("bcrypt");
+const bcryptjs = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const path = require("path");
 require("dotenv").config({ path: path.resolve(__dirname, "../env/.env") });
@@ -105,7 +105,7 @@ exports.authenticate = async (req, res, next) => {
     let user = await User.findOne({ email: email }, "-__v -createdAt");
 
     if (user) {
-      bcrypt.compare(password, user.password, function (err, response) {
+      bcryptjs.compare(password, user.password, function (err, response) {
         if (err) {
           throw new Error(err);
         }

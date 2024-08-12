@@ -2,7 +2,7 @@
 
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const bcrypt = require("bcrypt");
+const bcryptjs = require("bcryptjs");
 
 const User = new Schema(
   {
@@ -37,7 +37,7 @@ User.pre("save", function (next) {
     return next();
   }
 
-  this.password = bcrypt.hashSync(this.password, 10);
+  this.password = bcryptjs.hashSync(this.password, 10);
 
   next();
 });
