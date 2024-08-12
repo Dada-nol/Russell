@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documentation</title>
+  </head>
+  <body>
+    <main>
+      <h1>Documentation</h1>
+
+      <article>
+        <h2>Vue d'ensemble</h2>
+        <p>
+          Cette application est une API REST pour le port de plaisance de
+          Russell qui voulait se doter d'une application web de gestion des
+          réservations de catway
+        </p>
+        <p>
+          Les différentes tâches qui seront présentés ultérieurement sont les
+          suivantes :
+        </p>
+        <ul>
+          <li>Création d'un utilisateur</li>
+          <li>Modification de cet utilisateur</li>
+          <li>Lecture des données de l'utilisateur</li>
+          <li>Suppression de l'utilisateur</li>
+        </ul>
+        <p>On peut également :</p>
+        <ul>
+          <li>Créer un catway</li>
+          <li>Modifier un catway</li>
+          <li>Lire les données d'un catway</li>
+          <li>Supprimer un catway</li>
+        </ul>
+        <p>Et enfin on peut y :</p>
+        <ul>
+          <li>Créer une réservation</li>
+
+          <li>Lire les données d'une réservation</li>
+          <li>Supprimer une réservation</li>
+        </ul>
+      </article>
+      <article>
+        <h2>Tutoriel</h2>
+        <div>
+          <h3>Accéder aux données</h3>
+          <p>
+            Certaines données déjà enregistrées se trouve à l'intérieur du
+            repository github du projet. Elles ont été exporté de la base de
+            données à l'aide de mongodump.
+          </p>
+          <h4>Étapes pour Importer les Données</h4>
+          <ul>
+            <li>1. Transférer le fichier de sauvegarde</li>
+            <p>
+              Assurez-vous que le fichier de sauvegarde (généralement un dossier
+              contenant des fichiers BSON et JSON) est accessible sur le nouvel
+              appareil. Vous pouvez le transférer via SCP, FTP, une clé USB,
+              etc.
+            </p>
+            <li>2. Préparer la commande mongorestore</li>
+            <p>
+              Utilisez mongorestore pour importer les données. La commande
+              générale ressemble à ceci :
+            </p>
+            <p>mongorestore --uri="mongodb+srv://<username>:<password>@<cluster>.mongodb.net/<dbname>" /path/to/backup</p>
+          </ul>
+          <p></p>
+        </div>
+        <div>
+          <h3>Page d'accueil</h3>
+          <p>
+            Sur cette page vous pouvez accéder aux pages pour log in et sign
+            up(créer un utilisateur). Tout comme vous pour pouvez accéder au
+            tableau de bord, mais cette page n'est accessible que si un
+            utilisateur est connecté.
+          </p>
+          <p>
+            Si jamais aucun utilisateur n'est connecté, alors vous serez
+            redirigé vers la page log in.
+          </p>
+        </div>
+        <div>
+          <h3>Authentification</h3>
+          <p>
+            Vous ne pouvez vous connecter qu'avec un utilisateur déjà existant,
+            en utilisant son adresse email et son mot de passe.
+          </p>
+        </div>
+      </article>
+      <article>
+        <h2>Exemples</h2>
+        <p>Prenons pour exemple le formulaire de modification d'un utilisateur</p>
+      <ul>
+        <li>Formulaire HTML : Le formulaire envoie une requête POST à /users/user_id?_method=PATCH pour mettre à jour les informations de l'utilisateur.</li>
+        <li>Serveur Express : 
+          <ul><li>Route GET /users/:id/edit : Affiche le formulaire avec les informations actuelles de l'utilisateur.</li>
+            <li>Route PATCH /users/:id : Met à jour les informations de l'utilisateur dans la base de données.</li></ul>
+        </li>
+        <li>MongoDB : Utilisé pour stocker et récupérer les informations des utilisateurs.</li>
+      </ul>
+    </article>
+      
+    </main>
+  </body>
+</html>

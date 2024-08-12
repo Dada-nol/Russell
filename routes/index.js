@@ -18,6 +18,10 @@ router.get("/", async function (req, res, next) {
   });
 });
 
+const doc = router.get("/docu", (req, res, next) => {
+  res.render("doc");
+});
+
 const tdb = router.get(
   "/tableau_de_bord",
   private.checkJWT,
@@ -38,5 +42,6 @@ router.use("/catways", catwayRoute);
 router.use("/users", userRoute);
 router.use("/catways", reservationRoute);
 router.use(tdb);
+router.use(doc);
 
 module.exports = router;

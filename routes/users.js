@@ -11,7 +11,7 @@ router.post("/login", service.authenticate);
 
 router.get("/:id", private.checkJWT, service.getById);
 router.get("/", private.checkJWT, service.getAllUsers);
-router.post("/", private.checkJWT, service.add);
+router.post("/", service.add);
 router.patch("/:id", private.checkJWT, service.update);
 router.delete("/:id", private.checkJWT, service.delete);
 
