@@ -6,8 +6,6 @@ const private = require("../middlewares/private");
 
 router.get("/add", views.add_catway);
 router.get("/update/:id", views.update_catway);
-router.get("/delete/:id", views.delete_catway);
-router.get("/read/:id", views.read_catway);
 
 router.post("/", private.checkJWT, service.createCatway);
 router.get("/", private.checkJWT, service.getAllCatways);

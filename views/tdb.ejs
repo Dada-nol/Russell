@@ -30,6 +30,16 @@
             ><button class="btn btn-secondary">Ajouter un catway</button></a
           >
         </div>
+        <div class="col">
+          <form action="/catways" method="GET">
+            <button class="btn btn-secondary">Voir tous les catways</button>
+          </form>  
+        </div>
+        <div class="col">
+          <form action="/users" method="GET">
+            <button class="btn btn-secondary">Voir tous les utilisateurs</button>
+          </form>  
+        </div>
       </div>
     </div>
     <br />
@@ -38,6 +48,7 @@
     <table class="table">
       <thead>
         <tr>
+          <th scope="col">#id</th>
           <th scope="col">Utilisateur</th>
           <th scope="col">Email</th>
           <th scope="col">Action</th>
@@ -46,7 +57,8 @@
       <tbody>
         <%users.forEach((user)=> {%>
         <tr>
-          <th scope="row"><%= user.name%> <%= user.firstname%></th>
+          <th scope="row"><%= user.id%></th>
+          <td><%= user.name%> <%= user.firstname%></td>
           <td><%= user.email%></td>
           <td class="d-flex">
             <div>
@@ -81,18 +93,21 @@
     <table class="table">
       <thead>
         <tr>
+          <th scope="col">#id</th>
           <th scope="col">CatwayNumber</th>
           <th scope="col">Type</th>
-          <th scope="col">CatwayState</th>
           <th scope="col">Actions</th>
+          <th scope="col">Réserver</th>
+          <th scope="col">Réservations</th>
         </tr>
       </thead>
       <tbody>
         <%catways.forEach((catway)=> {%>
         <tr>
-          <th scope="row"><%= catway.catwayNumber%></th>
+          <th scope="row"><%= catway.id%></th>
+          <td><%= catway.catwayNumber%></td>
           <td><%= catway.type%></td>
-          <td><%= catway.catwayState%></td>
+
           <td class="d-flex">
             <div>
               <form method="GET" action="/catways/<%= catway._id %>">
@@ -113,8 +128,39 @@
               >
             </div>
           </td>
+          <td>
+            <a href="/catways/<%= catway.id  %>/reservations/add"
+              ><button class="btn btn-secondary">Réserver</button></a
+            >
+          </td>
+          <td >
+            <%reservations.forEach((reservation)=> {%> <%
+            if(reservation.catwayNumber === catway.catwayNumber) {%>
+              <div class="d-flex">
+                <div>
+                <form
+                method="GET"
+                action="/catways/<%= catway.id %>/reservations/<%= reservation.id  %>"
+                >
+                <button class="btn btn-primary">Voir</button>
+                </form>
+              </div>
+              <div>
+                <form
+                method="POST"
+                action="/catways/<%= catway.id %>/reservations/<%= reservation.id%>?_method=DELETE"
+                >
+                <button class="btn btn-danger">X</button>
+                </form>
+              </div></div>
+            <% } %> <% })%>
+          </td>
         </tr>
         <% })%>
+      </tbody>
+    </table>
+
+    
       </tbody>
     </table>
     <script

@@ -13,11 +13,13 @@ exports.checkJWT = async (req, res, next) => {
         console.log(err.message);
         return res.redirect("/users/login");
       } else {
-        console.log(decoded);
         next();
       }
     });
   } else {
-    return res.redirect("/users/login");
+    return (
+      res.redirect("/users/login"),
+      console.error("Vous devez être connecté pour effectuer cette action")
+    );
   }
 };

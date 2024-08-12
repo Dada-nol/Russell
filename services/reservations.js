@@ -58,14 +58,17 @@ exports.getOneReservation = async (req, res, next) => {
 };
 
 exports.getAllReservations = async (req, res, next) => {
+  const catwayId = req.params.id;
+  let catway = await Catway.findById(catwayId);
   const reservation = await Reservation.find();
 
   try {
-    for (let i = 0; i < reservation.length; i++) {
-      if (reservation) {
-        return res.status(200).json(reservation);
+    if (catway.catwayNumber === reservation.catwayNumber) {
+      for (let i = 0; i < reservation.length; i++) {
+        if (reservation) {
+          return res.status(200).json(reservation);
+        }
       }
-
       return res.status(404).json("reservation_not_found");
     }
 
