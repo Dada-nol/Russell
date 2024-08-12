@@ -1,3 +1,5 @@
+/* Routes pour la création, lecture, modification, suppression de l'objet user */
+
 const express = require("express");
 const router = express.Router();
 const service = require("../services/users");
