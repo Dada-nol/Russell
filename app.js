@@ -4,6 +4,7 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const cors = require("cors");
 const methodOverride = require("method-override");
+const helmet = require("helmet");
 
 const indexRouter = require("./routes/index");
 
@@ -14,6 +15,7 @@ mongodb.initClientDbConnection();
 const app = express();
 
 app.use(methodOverride("_method"));
+app.use(helmet());
 
 app.use(
   cors({

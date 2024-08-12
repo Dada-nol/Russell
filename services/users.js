@@ -129,11 +129,7 @@ exports.authenticate = async (req, res, next) => {
           );
           return (
             res.cookie("token", token, { httpOnly: true }),
-            res.render("tdb", {
-              title: "Tableau de bord",
-              users: users,
-              catways: catways,
-            })
+            res.redirect("/tableau_de_bord")
           );
         }
 

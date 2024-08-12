@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+  <head>
+    <title><%= title %></title>
+  </head>
+  <body>
+    <form method="POST" action="/catways/<%= catway.id %>/reservations/add">
+      <fieldset>
+        <legend>Formulaire de création de reservation</legend>
+        <br />
+
+        <label>Inscrivez un Id utilisateur</label>
+        <input type="text" name="user" required /><br /><br />
+
+        <label>Choisissez un nom de bateau</label>
+        <input type="text" name="boatName" required /><br /><br />
+
+        <label>Choisissez une date de début de reservation</label>
+        <input type="date" name="checkIn" required /><br /><br />
+
+        <label>Choisissez une date de fin de reservation</label>
+        <input type="date" name="checkOut" required /><br /><br />
+
+        <input type="submit" value="submit" />
+      </fieldset>
+    </form>
+  </body>
+</html>
