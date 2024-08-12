@@ -1,6 +1,6 @@
+/* Méthodes pour la création, lecture, modification, suppression de l'objet catway */
+
 const Catway = require("../models/catway");
-const path = require("path");
-require("dotenv").config({ path: path.resolve(__dirname, "../env/.env") });
 
 exports.createCatway = async (req, res, next) => {
   const temp = {

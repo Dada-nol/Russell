@@ -1,3 +1,5 @@
+/* Tests pour vérifier que toute les étapes du CRUD fonctionnent bien */
+
 const User = require("../models/user");
 const assert = require("assert");
 const sinon = require("sinon");

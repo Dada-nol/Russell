@@ -1,3 +1,5 @@
+/* Model Catway pour la base de données mongodb */
+
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 

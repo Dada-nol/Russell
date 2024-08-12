@@ -1,3 +1,5 @@
+/* Méthodes pour la création, lecture, modification, suppression de l'objet reservation */
+
 const Catway = require("../models/catway");
 const User = require("../models/user");
 const Reservation = require("../models/reservation");
@@ -28,7 +30,7 @@ module.exports.add = async (req, res, next) => {
     await reservation.save();
     return res.status(201).json(reservation);
   } catch (error) {
-    console.error("Error adding reservation:", error); // Log the error
+    console.error("Error adding reservation:", error);
     return res.status(501).json(error);
   }
 };
